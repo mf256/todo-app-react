@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import './components/AddItem';
+import AddItem from './components/AddItem';
+import './components/Items';
+import Items from './components/Items';
+import { MOCK_ITEMS } from './mockData';
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(MOCK_ITEMS);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row justify-content-md-center">
+        <div className="col col-lg-4">
+          <AddItem></AddItem>
+          <Items items={items}></Items>
+        </div>
+      </div>
     </div>
   );
 }
