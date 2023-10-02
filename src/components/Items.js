@@ -1,11 +1,11 @@
 import Item from './Item';
 
-function Items(props) {
+const Items = (props) => {
   return (
-    <table class="table table-striped">
+    <table className="table table-striped">
       <tbody>
         {props.items.map((item, index) => (
-          <Item key={index} item={item} index={index} />
+          <Item key={index} item={item} index={index} {...props} />
         ))}
       </tbody>
     </table>

@@ -1,4 +1,4 @@
-function Item(props) {
+const Item = (props) => {
   return (
     <tr>
       <td scope="row">{props.index + 1}</td>
@@ -8,11 +8,12 @@ function Item(props) {
           type="checkbox"
           value=""
           id={'checkboxitem-' + props.index}
+          onClick={() => props.onToggle(props.index)}
         />
       </td>
       <td>
         <label
-          for={'checkboxitem-' + props.index}
+          htmlFor={'checkboxitem-' + props.index}
           className={props.item.isCompleted ? 'done' : ''}
         >
           {props.item.name}
@@ -23,12 +24,13 @@ function Item(props) {
           className="btn btn-danger button-delete"
           type="button"
           id="button-addon2"
+          onClick={() => props.onDelete(props.index)}
         >
           X
         </button>
       </td>
     </tr>
   );
-}
+};
 
 export default Item;

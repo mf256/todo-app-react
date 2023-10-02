@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import './components/AddItem';
-import AddItem from './components/AddItem';
-import './components/Items';
+import Input from './components/Input';
 import Items from './components/Items';
 import { MOCK_ITEMS } from './mockData';
 
@@ -13,12 +11,34 @@ function App() {
     setItems(MOCK_ITEMS);
   }, []);
 
+  const addItem = (inputValue) => {
+    if (inputValue) {
+      setItems([...items, { name: inputValue, isCompleted: false }]);
+    }
+  };
+
+  const toggleItem = (index) => {
+    setItems([
+      ...items.map((v, i) =>
+        i === index ? { ...v, isCompleted: !v.isCompleted } : v
+      ),
+    ]);
+  };
+
+  const deleteItem = (index) => {
+    setItems([...items.filter((v, i) => i !== index)]);
+  };
+
   return (
     <div className="container">
       <div className="row justify-content-md-center">
         <div className="col col-lg-4">
-          <AddItem></AddItem>
-          <Items items={items}></Items>
+          <Input onAdd={addItem}></Input>
+          <Items
+            items={items}
+            onToggle={toggleItem}
+            onDelete={deleteItem}
+          ></Items>
         </div>
       </div>
     </div>
