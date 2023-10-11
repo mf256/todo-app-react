@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Input from './components/Input';
 import Items from './components/Items';
+import Title from './components/Title';
 import { MOCK_ITEMS } from './mockData';
 
 function App() {
+  const title = "Todo List";
   const [items, setItems] = useState([]);
+
 
   useEffect(() => {
     setItems(MOCK_ITEMS);
@@ -30,15 +33,18 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-md-center">
-        <div className="col col-lg-4">
-          <Input onAdd={addItem}></Input>
-          <Items
-            items={items}
-            onToggle={toggleItem}
-            onDelete={deleteItem}
-          ></Items>
+    <div className="app">
+      <Title title={title}/>
+      <div className="container">
+        <div className="row justify-content-md-center">
+          <div className="col col-lg-4">
+            <Input onAdd={addItem}></Input>
+            <Items
+              items={items}
+              onToggle={toggleItem}
+              onDelete={deleteItem}
+            ></Items>
+          </div>
         </div>
       </div>
     </div>

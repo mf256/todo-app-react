@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const Input = ({onAdd}) => {
-
+const Input = (props) => {
+  const {onAdd} = props;
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -14,10 +14,7 @@ const Input = ({onAdd}) => {
         aria-describedby="button-addon2"
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
-        onKeyPress={(event) =>
-          event.key === 'Enter' ? onAdd(inputValue) : null
-        }
-
+        onKeyPress={(event) => event.key === 'Enter' ? onAdd(inputValue) : null}
       />
       <button
         className="btn btn-outline-secondary btn-primary button-add"

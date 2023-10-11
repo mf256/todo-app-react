@@ -1,4 +1,6 @@
 const Item = (props) => {
+  const {onToggle, onDelete} = props;
+
   return (
     <tr>
       <td scope="row">{props.index + 1}</td>
@@ -8,7 +10,7 @@ const Item = (props) => {
           type="checkbox"
           value=""
           id={'checkboxitem-' + props.index}
-          onClick={() => props.onToggle(props.index)}
+          onClick={() => onToggle(props.index)}
         />
       </td>
       <td>
@@ -24,7 +26,7 @@ const Item = (props) => {
           className="btn btn-danger button-delete"
           type="button"
           id="button-addon2"
-          onClick={() => props.onDelete(props.index)}
+          onClick={() => onDelete(props.index)}
         >
           X
         </button>

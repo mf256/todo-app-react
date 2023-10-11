@@ -1,4 +1,4 @@
-function AddItem() {
+const AddItem = () => {
   return (
     <div className="input-group mb-3">
       <input
